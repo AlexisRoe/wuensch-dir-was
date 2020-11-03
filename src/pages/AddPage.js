@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Button from '../components/Button';
 
 const Container = styled.div`
   width: 100%;
@@ -12,6 +14,9 @@ const Headline = styled.h1`
 export default function AddPage() {
   return (
     <Container>
+      <Link to="/">
+        <Button>◁</Button>
+      </Link>
       <Headline>Füge einen neuen Wunsch ein</Headline>
     </Container>
   );

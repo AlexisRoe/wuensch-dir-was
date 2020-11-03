@@ -1,70 +1,148 @@
-# Getting Started with Create React App
+# Building Wish List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The week-5-project of the "Neue Fische" Bootcamp. Learning React Routing, styled Components, API Usage
 
-## Available Scripts
+- [React Routing](https://reactrouter.com/) (Route, Switch, Link)
 
-In the project directory, you can run:
+        import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
-### `npm start`
+        export default function App() {
+        return (
+            <Router>
+            <div>
+                <nav>
+                <ul>
+                    <li>
+                    <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                    <Link to="/about">About</Link>
+                    </li>
+                    <li>
+                    <Link to="/users">Users</Link>
+                    </li>
+                </ul>
+                </nav>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+                {/* A <Switch> looks through its children <Route>s and renders the first one that matches the current URL. */}
+                <Switch>
+                <Route path="/about">
+                    <About />
+                </Route>
+                <Route path="/users">
+                    <Users />
+                </Route>
+                <Route path="/">
+                    <Home />
+                </Route>
+                </Switch>
+            </div>
+            </Router>
+        );
+        }
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+        function Home() {
+        return <h2>Home</h2>;
+        }
 
-### `npm test`
+        function About() {
+        return <h2>About</h2>;
+        }
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+        function Users() {
+        return <h2>Users</h2>;
+        }
 
-### `npm run build`
+- [styled components](https://styled-components.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+        import styled from 'styled-components/macro';
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+        const Button = styled.button`
+        /* Adapt the colors based on primary prop */
+        background: ${props => props.primary ? "palevioletred" : "white"};
+        color: ${props => props.primary ? "white" : "palevioletred"};
+        font-size: 1em;
+        margin: 1em;
+        padding: 0.25em 1em;
+        border: 2px solid palevioletred;
+        border-radius: 3px;
+        display: block;
+        `;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+        const TomatoButton = styled(Button)`
+        color: tomato;
+        border-color: tomato;
+        `;
 
-### `npm run eject`
+        render(
+        <div>
+            <Button>Normal Button</Button>
+            <Button as="a" href="/">Link with Button styles</Button>
+            <TomatoButton as="a" href="/">Link with Tomato Button styles</TomatoButton>
+        </div>
+        );
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [Composition vs. Inheritance](https://reactjs.org/docs/composition-vs-inheritance.html)
+- [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+        import PropTypes from 'prop-types';
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+        class Greeting extends React.Component {
+        render() {
+            return (
+            <h1>Hello, {this.props.name}</h1>
+            );
+        }
+        }
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+        Greeting.propTypes = {
+        name: PropTypes.string
+        };
 
-## Learn More
+- ...
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Adding GlobalStyles to Storybook (all pages & components)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+.storybook > preview.js
 
-### Code Splitting
+        import React from 'react';
+        import { BrowserRouter as Router } from 'react-router-dom';
+        import GlobalStyle from '../src/GlobalStyle';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+        export const decorators = [
+        (Story) => (
+            <Router>
+            <GlobalStyle />
+            <Story />
+            </Router>
+        ),
+        ];
 
-### Analyzing the Bundle Size
+        export const parameters = {
+        actions: { argTypesRegex: '^on[A-Z].*' },
+        };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Un-used Variables
 
-### Making a Progressive Web App
+Eslint warnings through development and committing AND errors when pushing it
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+.eslintrc.js
 
-### Advanced Configuration
+        'react/jsx-filename-extension': 'off',
+        'react/jsx-props-no-spreading': 'off',
+        'jsx-a11y/label-has-associated-control': 'off',
+        'no-unused-vars': 'warn',
+        'import/order': 'warn',
+        'import/newline-after-import': 'warn',
+    },
+    };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+package.json
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    "build:storybook": "build-storybook -s public --no-dll -o build/storybook",
+        "build": "npm run build:app && npm run build:storybook",
+        "stylelint": "stylelint \"**/*.{js,jsx,css}\"",
+        "eslint": "eslint \"**/*.{js,jsx}\" --max-warnings=0",
+        "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,md,mdx,html,css,json}\"",
+        "test:watch": "react-scripts test",
+        "test": "react-scripts test --watchAll=false && npm run stylelint && npm run eslint && npm run prettier",

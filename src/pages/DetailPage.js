@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/Button';
 
@@ -13,13 +13,11 @@ const Headline = styled.h1`
 
 export default function DetailPage() {
   return (
-    <Router>
-      <Container>
-        <Link to="/">
-          <Button>◁</Button>
-        </Link>
-        <Headline>Dies ist die Detail-Seite</Headline>
-      </Container>
-    </Router>
+    <Container>
+      <Link to="/">
+        <Button>◁</Button>
+      </Link>
+      <Headline>Dies ist die Detail-Seite</Headline>
+    </Container>
   );
 }

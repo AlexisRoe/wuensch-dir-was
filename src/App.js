@@ -18,8 +18,14 @@ function App() {
       <Switch>
         <Route exact path="/">
           <ListContainer>
-            <Link to="/addList">
+            <Link to="/details">
               <Wishlistitem title="Martin Luther" />
+            </Link>
+            <Link to="/details">
+              <Wishlistitem title="Lisa Meier" />
+            </Link>
+            <Link to="/details">
+              <Wishlistitem title="Franz" />
             </Link>
           </ListContainer>
           <Link to="/addList">
