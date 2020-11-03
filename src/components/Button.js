@@ -7,12 +7,16 @@ const Button = styled.button`
   line-height: 1;
   border-radius: 50%;
   z-index: 1;
-  font-size: 3rem;
+  font-size: 2rem;
   background-color: #c22f91;
   color: white;
   cursor: pointer;
-  border: 1px solid white;
+  border: none;
   outline: none;
+  box-shadow: 15px 15px 30px 10px #e8b7d5;
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
 `;
 
 export default Button;
