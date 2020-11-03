@@ -53,35 +53,7 @@ The week-5-project of the "Neue Fische" Bootcamp. Learning React Routing, styled
         return <h2>Users</h2>;
         }
 
-- [styled components](https://styled-components.com/)
-
-        import styled from 'styled-components/macro';
-
-        const Button = styled.button`
-        /* Adapt the colors based on primary prop */
-        background: ${props => props.primary ? "palevioletred" : "white"};
-        color: ${props => props.primary ? "white" : "palevioletred"};
-        font-size: 1em;
-        margin: 1em;
-        padding: 0.25em 1em;
-        border: 2px solid palevioletred;
-        border-radius: 3px;
-        display: block;
-        `;
-
-        const TomatoButton = styled(Button)`
-        color: tomato;
-        border-color: tomato;
-        `;
-
-        render(
-        <div>
-            <Button>Normal Button</Button>
-            <Button as="a" href="/">Link with Button styles</Button>
-            <TomatoButton as="a" href="/">Link with Tomato Button styles</TomatoButton>
-        </div>
-        );
-
+- styled components
 - [Composition vs. Inheritance](https://reactjs.org/docs/composition-vs-inheritance.html)
 - [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
 
