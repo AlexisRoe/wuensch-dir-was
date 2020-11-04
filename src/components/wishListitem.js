@@ -12,10 +12,10 @@ const Item = styled.li`
   list-style: none;
 `;
 
-export default function WishListitem({ title }) {
+export default function WishListitem({ id, title }) {
   return (
     <>
-      <Link to={`details/${title.replace(' ', '_')}`}>
+      <Link to={`details/${id}`}>
         <Item>{title}</Item>
       </Link>
     </>
@@ -24,4 +24,5 @@ export default function WishListitem({ title }) {
 
 WishListitem.propTypes = {
   title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };

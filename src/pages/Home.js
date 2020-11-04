@@ -25,7 +25,7 @@ export default function AddPage() {
     <>
       <ListContainer>
         {lists?.map((list) => (
-          <Wishlistitem key={list.id} title={list.title} />
+          <Wishlistitem key={list.id} id={list.id} title={list.title} />
         ))}
       </ListContainer>
       <Link to="/addList">
