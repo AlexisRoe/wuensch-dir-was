@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Item = styled.li`
@@ -14,7 +15,9 @@ const Item = styled.li`
 export default function WishListitem({ title }) {
   return (
     <>
-      <Item>{title}</Item>
+      <Link to={`details/${title.replace(' ', '_')}`}>
+        <Item>{title}</Item>
+      </Link>
     </>
   );
 }

@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 import styled from 'styled-components';
+
 import Button from '../components/Button';
 import Wishlistitem from '../components/wishListitem';
+
+import { getLists } from '../api/lists';
 
 const ListContainer = styled.ul`
   margin: 0;
@@ -9,18 +14,19 @@ const ListContainer = styled.ul`
 `;
 
 export default function AddPage() {
+  const [lists, setLists] = useState(null);
+
+  useEffect(async () => {
+    const newLists = await getLists();
+    setLists(newLists);
+  }, []);
+
   return (
     <>
       <ListContainer>
-        <Link to="/details/Martin_Luther">
-          <Wishlistitem title="Martin Luther" />
-        </Link>
-        <Link to="/details/Lisa_Meier">
-          <Wishlistitem title="Lisa Meier" />
-        </Link>
-        <Link to="/details/Franz">
-          <Wishlistitem title="Franz" />
-        </Link>
+        {lists?.map((list) => (
+          <Wishlistitem key={list.id} title={list.title} />
+        ))}
       </ListContainer>
       <Link to="/addList">
         <Button>+</Button>

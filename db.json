@@ -1,0 +1,16 @@
+{
+  "lists": [
+    {
+      "id": 1,
+      "title": "Martin Luther"
+    },
+    {
+      "id": 2,
+      "title": "Lisa Meier"
+    },
+    {
+      "id": 3,
+      "title": "Franz"
+    }
+  ]
+}
