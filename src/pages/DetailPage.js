@@ -26,7 +26,7 @@ export default function DetailPage() {
     setList(newTitle);
   }, []);
 
-  if (list) {
+  if (!list) {
     return <div>Loading ...</div>;
   }
 

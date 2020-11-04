@@ -118,3 +118,22 @@ package.json
         "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,md,mdx,html,css,json}\"",
         "test:watch": "react-scripts test",
         "test": "react-scripts test --watchAll=false && npm run stylelint && npm run eslint && npm run prettier",
+
+## Json Server
+
+[Learning to use Json Server](https://github.com/typicode/json-server)
+
+        const [lists, setLists] = useState(null);
+
+        useEffect(async () => {
+            const newLists = await getLists();
+            setLists(newLists);
+        }, []);
+
+        return (
+            <>
+            <ListContainer>
+                {lists?.map((list) => (
+                <Wishlistitem key={list.id} id={list.id} title={list.title} />
+                ))}
+            </ListContainer>
