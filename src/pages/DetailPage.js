@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/Button';
 
@@ -12,12 +12,13 @@ const Headline = styled.h1`
 `;
 
 export default function DetailPage() {
+  const { id } = useParams();
   return (
     <Container>
       <Link to="/">
         <Button>◁</Button>
       </Link>
-      <Headline>Dies ist die Detail-Seite</Headline>
+      <Headline>Dies ist die Detail-Seite von: {id.replace('_', ' ')}</Headline>
     </Container>
   );
 }
