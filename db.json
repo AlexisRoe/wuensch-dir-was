@@ -24,6 +24,11 @@
       "title": "Lisa Pink",
       "wishes": ["Lippenstift", "Döner"],
       "id": 7
+    },
+    {
+      "title": "Meier Müller",
+      "wishes": ["Socken", "Unterhosen"],
+      "id": 8
     }
   ]
 }
