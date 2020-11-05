@@ -1,0 +1,19 @@
+{
+  "lists": [
+    {
+      "id": 1,
+      "title": "Martin Luther",
+      "wishes": ["Bernd das Brot", "Leberkäse", "Socken"]
+    },
+    {
+      "id": 2,
+      "title": "Lisa Meier",
+      "wishes": ["Meerschweinchen", "Familienbild", "Socken"]
+    },
+    {
+      "id": 3,
+      "title": "Franz",
+      "wishes": ["Weisswurst", "Senf", "Bier"]
+    }
+  ]
+}
