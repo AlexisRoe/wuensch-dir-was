@@ -15,7 +15,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"npm run api\"",
     "api": "json-server --watch db.json --port 5000",
     "build:app": "react-scripts build",
     "build:storybook": "build-storybook -s public --no-dll -o build/storybook",
