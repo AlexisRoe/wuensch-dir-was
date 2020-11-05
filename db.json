@@ -34,6 +34,16 @@
       "title": "Leon",
       "wishes": ["Eierlikör"],
       "id": 9
+    },
+    {
+      "title": "Marvin",
+      "wishes": ["Tetris", "Gameboy"],
+      "id": 10
+    },
+    {
+      "title": "Marvin",
+      "wishes": ["Gameboy", "Tetris"],
+      "id": 11
     }
   ]
 }

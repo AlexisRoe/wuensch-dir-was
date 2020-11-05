@@ -38,6 +38,8 @@ export default function AddPage() {
   const history = useHistory();
   const [title, setTitle] = useState('');
   const [wishes, setWishes] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [errMessage, setErrMessage] = useState(null);
 
   function handleTitle(event) {
     setTitle(event.target.value);
@@ -47,16 +49,25 @@ export default function AddPage() {
     setWishes(event.target.value.split('\n'));
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const list = {
       title,
       wishes,
     };
-    addNewList(list);
-    setTitle('');
-    setWishes('');
-    history.push('/');
+
+    try {
+      setLoading(true);
+      setErrMessage(null);
+      const newList = await addNewList(list);
+      // setTitle('');
+      // setWishes('');
+      // setLoading(false);
+      history.push(`/details/${newList.id}`);
+    } catch (err) {
+      setLoading(false);
+      setErrMessage(err.message);
+    }
   }
 
   return (
@@ -71,7 +82,7 @@ export default function AddPage() {
           id="title"
           value={title}
           required
-          autofocus
+          autoFocus
           onChange={handleTitle}
         />
 
@@ -79,14 +90,17 @@ export default function AddPage() {
         <InputWish
           name="wishes"
           id="wishes"
-          value={wishes}
+          // value={wishes}
           cols="50"
           required
           onChange={handleWishes}
         />
 
-        <input type="submit" value="Anlegen" />
+        <input type="submit" value="Anlegen" disabled={loading} />
       </AddForm>
+
+      {loading && <div>Loading ...</div>}
+      {errMessage && <div>A error accured, sorry</div>}
     </Container>
   );
 }

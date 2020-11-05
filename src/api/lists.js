@@ -17,11 +17,13 @@ export async function deleteListbyID(id) {
 }
 
 export async function addNewList(payload) {
-  await fetch(`http://localhost:5000/lists`, {
+  const response = await fetch(`http://localhost:5000/lists`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify(payload),
   });
+  const newList = await response.json();
+  return newList;
 }
