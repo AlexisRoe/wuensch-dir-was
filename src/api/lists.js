@@ -16,12 +16,12 @@ export async function deleteListbyID(id) {
   });
 }
 
-export async function addNewList(content) {
+export async function addNewList(payload) {
   await fetch(`http://localhost:5000/lists`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
     },
-    body: JSON.stringify(content),
+    body: JSON.stringify(payload),
   });
 }

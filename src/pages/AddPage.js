@@ -36,24 +36,24 @@ const InputWish = styled.textarea`
 
 export default function AddPage() {
   const history = useHistory();
-  const [name, setName] = useState(null);
+  const [title, setTitle] = useState(null);
   const [wishes, setWishes] = useState(null);
 
-  function handleName(event) {
-    setName(event.target.value);
+  function handleTitle(event) {
+    setTitle(event.target.value);
   }
 
   function handleWishes(event) {
-    setWishes(event.target.value);
+    setWishes(event.target.value.split('\n'));
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    const content = {
-      title: name,
-      wishes: wishes.split('\n'),
+    const payload = {
+      title,
+      wishes,
     };
-    addNewList(content);
+    addNewList(payload);
     history.push('/');
   }
 
@@ -62,14 +62,14 @@ export default function AddPage() {
       <Button onClick={() => history.push('/')}>◁</Button>
       <Headline>Füge einen neuen Wunsch ein</Headline>
       <AddForm onSubmit={handleSubmit}>
-        <label htmlFor="name">Für wenn ist die Liste?</label>
+        <label htmlFor="title">Für wenn ist die Liste?</label>
         <InputName
           type="text"
-          name="name"
-          id="name"
+          name="title"
+          id="title"
           required
           autofocus
-          onChange={handleName}
+          onChange={handleTitle}
         />
 
         <label htmlFor="wishes">Was sind deine Wünsche</label>
