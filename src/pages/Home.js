@@ -21,10 +21,14 @@ export default function AddPage() {
     setLists(newLists);
   }, []);
 
+  if (!lists) {
+    return <div>Loading ...</div>;
+  }
+
   return (
     <>
       <ListContainer>
-        {lists?.map((list) => (
+        {lists.map((list) => (
           <Wishlistitem key={list.id} id={list.id} title={list.title} />
         ))}
       </ListContainer>
