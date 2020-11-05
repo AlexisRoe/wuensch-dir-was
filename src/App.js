@@ -1,19 +1,24 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import GlobalStyle from './GlobalStyle';
+import AddPage from './pages/AddPage';
+import DetailPage from './pages/DetailPage';
+import Home from './pages/Home';
 
 function App() {
   return (
     <Router>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-      </ul>
+      <GlobalStyle />
       <Switch>
-        <Route path="/contact">Contact</Route>
-        <Route path="/">Home</Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/addList">
+          <AddPage />
+        </Route>
+        <Route path="/details/:id">
+          <DetailPage />
+        </Route>
       </Switch>
     </Router>
   );
