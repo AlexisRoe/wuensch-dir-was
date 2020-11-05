@@ -36,8 +36,8 @@ const InputWish = styled.textarea`
 
 export default function AddPage() {
   const history = useHistory();
-  const [title, setTitle] = useState(null);
-  const [wishes, setWishes] = useState(null);
+  const [title, setTitle] = useState('');
+  const [wishes, setWishes] = useState('');
 
   function handleTitle(event) {
     setTitle(event.target.value);
@@ -49,11 +49,13 @@ export default function AddPage() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const payload = {
+    const list = {
       title,
       wishes,
     };
-    addNewList(payload);
+    addNewList(list);
+    setTitle('');
+    setWishes('');
     history.push('/');
   }
 
@@ -67,6 +69,7 @@ export default function AddPage() {
           type="text"
           name="title"
           id="title"
+          value={title}
           required
           autofocus
           onChange={handleTitle}
@@ -76,7 +79,9 @@ export default function AddPage() {
         <InputWish
           name="wishes"
           id="wishes"
+          value={wishes}
           cols="50"
+          required
           onChange={handleWishes}
         />
 

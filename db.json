@@ -29,6 +29,11 @@
       "title": "Meier Müller",
       "wishes": ["Socken", "Unterhosen"],
       "id": 8
+    },
+    {
+      "title": "Leon",
+      "wishes": ["Eierlikör"],
+      "id": 9
     }
   ]
 }
