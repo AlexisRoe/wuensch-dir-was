@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "api": "json-server --watch db.json --port 5000",
     "build:app": "react-scripts build",
     "build:storybook": "build-storybook -s public --no-dll -o build/storybook",
     "build": "npm run build:app && npm run build:storybook",
