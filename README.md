@@ -137,3 +137,52 @@ package.json
                 <Wishlistitem key={list.id} id={list.id} title={list.title} />
                 ))}
             </ListContainer>
+
+## TIPP: Custom Query Hook
+
+einbinden in App (example)
+
+    import React from "react";
+    import useFetch from "./useFetch";
+
+    export default function HookDemo() {
+    const { data, loading, error } = useFetch("users");
+    if (loading) return "Loading...";
+    if (error) return "Oops!";
+    return data[0].username;
+    }
+
+custom query hook
+
+    import { useState, useEffect, useRef } from "react";
+    // This custom hook centralizes and streamlines handling of HTTP calls
+    export default function useFetch(url, init) {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const prevInit = useRef();
+    const prevUrl = useRef();
+
+    useEffect(() => {
+    // Only refetch if url or init params change.
+        if (prevUrl.current === url && prevInit.current === init) return;
+        prevUrl.current = url;
+        prevInit.current = init;
+        fetch(process.env.REACT_APP_API_BASE_URL + url, init)
+        .then(response => {
+            if (response.ok) return response.json();
+            setError(response);
+        })
+        .then(data => setData(data))
+        .catch(err => {
+            console.error(err);
+            setError(err);
+        })
+        .finally(() => setLoading(false));
+    }, [init, url]);
+
+    return { data, loading, error };
+    }
+
+Source: https://www.bitnative.com/2020/07/06/four-ways-to-fetch-data-in-react/ <br />
+read on 2020-11-04

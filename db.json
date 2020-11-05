@@ -1,11 +1,6 @@
 {
   "lists": [
     {
-      "id": 1,
-      "title": "Martin Luther",
-      "wishes": ["Bernd das Brot", "Leberkäse", "Socken"]
-    },
-    {
       "id": 2,
       "title": "Lisa Meier",
       "wishes": ["Meerschweinchen", "Familienbild", "Socken"]
@@ -14,6 +9,26 @@
       "id": 3,
       "title": "Franz",
       "wishes": ["Weisswurst", "Senf", "Bier"]
+    },
+    {
+      "title": "Marget Weigler",
+      "wishes": ["Weihnachtsbaum", "Lichterkette", "Schokolade - egal was"],
+      "id": 4
+    },
+    {
+      "title": "Donald Duck",
+      "wishes": ["Money", "Job", "a better girlfriend"],
+      "id": 5
+    },
+    {
+      "title": "Lisa Pink",
+      "wishes": ["Lippenstift", "Döner"],
+      "id": 7
+    },
+    {
+      "title": "Meier Müller",
+      "wishes": ["Socken", "Unterhosen"],
+      "id": 8
     }
   ]
 }
